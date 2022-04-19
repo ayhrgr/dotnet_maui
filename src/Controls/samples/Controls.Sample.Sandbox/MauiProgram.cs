@@ -1,6 +1,7 @@
 ﻿using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Hosting;
+using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Hosting;
 
 namespace Maui.Controls.Sample
@@ -16,16 +17,9 @@ namespace Maui.Controls.Sample
 
 	class App : Application
 	{
-		protected override Window CreateWindow(IActivationState activationState) =>
-			new Window(
-				new ContentPage
-				{
-					Content = new Label
-					{
-						Text = "Hello Sandbox!",
-						HorizontalOptions = LayoutOptions.Center,
-						VerticalOptions = LayoutOptions.Center,
-					}
-				});
+		protected override Window CreateWindow(IActivationState activationState)
+		{
+			return new Window(new MauiApp24.MainPage());
+		}
 	}
 }
