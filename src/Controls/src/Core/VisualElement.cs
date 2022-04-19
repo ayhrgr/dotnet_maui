@@ -241,7 +241,18 @@ namespace Microsoft.Maui.Controls
 			{
 				if (newvalue != null)
 					(bindable as VisualElement)?.NotifyBackgroundChanges();
-			});
+			}, defaultValueCreator: OnDefaultValueCreator);
+
+		private static object OnDefaultValueCreator(BindableObject bindable)
+		{
+			var setter = DefaultStyles.GetBackground(bindable);
+			if (setter != null)
+			{
+				return setter.Value;
+			}
+
+			return Brush.Default;
+		}
 
 		void NotifyBackgroundChanges()
 		{
